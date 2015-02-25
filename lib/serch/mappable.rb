@@ -40,7 +40,7 @@ module Serch
     end
 
     def to_map
-      fields = Search::Mapping.new(self, self.class.mappable_fields)
+      fields = Serch::Mapping.new(self, self.class.mappable_fields)
       nested_maps.each { |map| fields.merge!(map) }
     rescue
       {}
@@ -56,7 +56,7 @@ module Serch
         begin
           obj = self
           path.each { |key| obj = obj.send(key) }
-          Search::Mapping.new(obj, obj.class.mappable_fields)
+          Serch::Mapping.new(obj, obj.class.mappable_fields)
         rescue
           {}
         end

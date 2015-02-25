@@ -11,17 +11,11 @@ describe Serch do
 
     let(:host) { "host" }
 
-    before { subject.host = host }
+    before { Serch.host = host }
 
-    subject { subject.host }
+    specify  { expect(Serch.host).to be_a String }
 
-    it "should not be nil" do
-      expect(subject).to be_a String
-    end
-
-    it "should set the correct value" do
-      expect(subject).to eq host
-    end
+    specify  { expect(Serch.host).to eq host }
 
   end
 
@@ -29,33 +23,21 @@ describe Serch do
 
     let(:port) { "port" }
 
-    before { subject.port = port }
+    before { Serch.port = port }
 
-    subject { subject.port }
+    specify  { expect(Serch.port).to be_a String }
 
-    it "should not be nil" do
-      expect(subject).to be_a String
-    end
-
-    it "should set the correct value" do
-      expect(subject).to eq port
-    end
+    specify  { expect(Serch.port).to eq port }
 
   end
 
   describe "return value of #debug" do
 
-    before { subject.debug = true }
+    before { Serch.debug = true }
 
-    subject { subject.debug }
+    specify  { expect(Serch.debug).to_not be_falsey }
 
-    it "should not be nil" do
-      expect(subject).to_not be nil
-    end
-
-    it "should set the correct value" do
-      expect(subject).to eq true
-    end
+    specify  { expect(Serch.debug).to eq true }
 
   end
 

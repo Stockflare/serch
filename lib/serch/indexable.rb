@@ -52,7 +52,7 @@ module Serch
     private
 
     def initialize_index
-      Search::Index.new(*index_parameters)
+      Serch::Index.new(*index_parameters)
     end
 
     def index_parameters

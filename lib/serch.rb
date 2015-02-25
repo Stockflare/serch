@@ -1,6 +1,10 @@
 require 'elasticsearch'
+
+require 'active_support/concern'
 require 'active_support/dependencies/autoload'
 require 'active_support/core_ext/module/attribute_accessors'
+require 'active_support/core_ext/string/inflections'
+require 'active_support/inflector'
 
 require 'serch/version'
 
@@ -86,8 +90,6 @@ module Serch
   def self.search(map)
     connection.search(map)
   end
-
-  private
 
   def self.connection
     @@connection ||= Elasticsearch::Client.new log: self.debug, host: "#{self.host}:#{self.port}"

@@ -33,7 +33,7 @@ describe Serch::Filter do
   before do
     @test_index = TestSearchIndex.new
     @test_index.create_index
-    sleep 1
+    sleep 2
   end
 
   after { @test_index.destroy_index }
@@ -73,12 +73,10 @@ describe Serch::Filter do
 
     describe "when an average is requested" do
 
-      subject { TestSearchIndex.aggregate(:the_time, :average) }
-
-      it { should_not be_nil }
+      before { sleep 5 }
 
       it "should contain the correct aggregate value" do
-        expect(subject).to eq 1337
+        expect(TestSearchIndex.aggregate(:the_time, :average)).to eq 1337
       end
 
     end
@@ -146,10 +144,8 @@ describe Serch::Filter do
 
       before { sleep 3 }
 
-      subject { TestSearchIndex.filter(filters).records }
-
       it "should contain the correct id" do
-        expect(subject).to include @test_index.id.to_s
+        expect(TestSearchIndex.filter(filters).records).to include @test_index.id.to_s
       end
 
     end
@@ -158,10 +154,8 @@ describe Serch::Filter do
 
       before { sleep 3 }
 
-      subject { TestSearchIndex.search("Dav").records }
-
       it "should contain the correct id" do
-        expect(subject).to include @test_index.id.to_s
+        expect(TestSearchIndex.search("Dav").records).to include @test_index.id.to_s
       end
 
     end

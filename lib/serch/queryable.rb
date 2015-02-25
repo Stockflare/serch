@@ -37,7 +37,7 @@ module Serch
       #
       # @return [Array, Mixed] Array of matching objects retrieved using #where
       def filter(conditions = {})
-        query = Search::Query.new(self.query_index_name, conditions)
+        query = Serch::Query.new(self.query_index_name, conditions)
         perform_filter(query)
       end
 
@@ -61,7 +61,7 @@ module Serch
       private
 
       def perform_filter(query)
-        Search::Filter.new(self.query_index_name, query, :id, self)
+        Serch::Filter.new(self.query_index_name, query, :id, self)
       end
 
     end
