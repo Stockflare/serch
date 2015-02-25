@@ -1,3 +1,4 @@
 module Serch
-  VERSION = "0.0.1"
+  # Current version of the Serch gem.
+  VERSION = "0.16.0"
 end

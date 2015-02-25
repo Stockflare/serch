@@ -1,0 +1,12 @@
+elasticsearch:
+  image: dockerfile/elasticsearch
+  ports:
+    - "9200"
+    - "9300"
+serch:
+  build: .
+  command: bundle exec foreman start
+  volumes:
+    - .:/serch
+  links:
+    - elasticsearch
